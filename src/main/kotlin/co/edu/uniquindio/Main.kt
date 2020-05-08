@@ -1,6 +1,5 @@
 package co.edu.uniquindio
 
-import co.edu.uniquindio.controlador.VentanaPrincipalController
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
@@ -15,7 +14,7 @@ class Main : Application() {
      * Inicializacion de la GUI
      */
     override fun start(primaryStage: Stage?) {
-        val loader = FXMLLoader(VentanaPrincipalController::class.java.getResource("../vista/VentanaPrincipal.fxml"))
+        val loader = FXMLLoader(javaClass.getResource("./vista/VistaPrincipal.fxml"))
         val parent: Parent = loader.load()
 
         val scene = Scene(parent)
