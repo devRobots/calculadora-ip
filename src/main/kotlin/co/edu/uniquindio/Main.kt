@@ -20,7 +20,11 @@ class Main : Application() {
         val scene = Scene(parent)
 
         primaryStage?.scene = scene
-        primaryStage?.title = "Compilador"
+        primaryStage?.title = "Calculadora IP"
+
+        primaryStage?.minHeight = 400.0
+        primaryStage?.minWidth  = 600.0
+
         primaryStage?.show()
     }
 
