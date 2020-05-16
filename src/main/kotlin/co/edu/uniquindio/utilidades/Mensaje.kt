@@ -1,7 +1,5 @@
 package co.edu.uniquindio.utilidades
 
-import co.edu.uniquindio.excepciones.Excepcion
-
 import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.Alert.AlertType.*
@@ -9,8 +7,8 @@ import javafx.scene.control.Alert.AlertType.*
 class Mensaje {
     companion object {
         @JvmStatic
-        private fun mensaje(ex: Excepcion, tipo: AlertType, titulo: String) {
-            mensaje(tipo, titulo, ex.nombre, ex.message)
+        private fun mensaje(ex: Exception, tipo: AlertType, titulo: String) {
+            mensaje(tipo, titulo, ex.javaClass.simpleName, ex.message)
         }
 
         @JvmStatic
@@ -30,13 +28,13 @@ class Mensaje {
         }
 
         @JvmStatic
-        fun advertencia(ex: Excepcion) {
+        fun advertencia(ex: Exception) {
             mensaje(ex, WARNING, "Advertencia")
         }
 
         @JvmStatic
-        fun error(ex: Excepcion) {
-            mensaje(ex, WARNING, "Informacion")
+        fun error(ex: Exception) {
+            mensaje(ex, ERROR, "Error")
         }
     }
 }
