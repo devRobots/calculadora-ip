@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09e5b8d5-fd6e-41a4-b541-31b97c84f13e" name="Default Changelist" comment="" />
+    <list default="true" id="09e5b8d5-fd6e-41a4-b541-31b97c84f13e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/co/edu/uniquindio/pruebas/SistemasNumericosTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/co/edu/uniquindio/pruebas/HelloTest.kt" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +16,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Kotlin File" />
+        <option value="JUnit4 Test Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -43,6 +48,8 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/modelo" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -52,14 +59,17 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateKotlinClassDialog.RecentsKey">
-      <recent name="co.edu.uniquindio.controlador" />
-    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="co.edu.uniquindio.pruebas" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/modelo" />
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="co.edu.uniquindio.controlador" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="co.edu.uniquindio.pruebas" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/vista" />
@@ -67,8 +77,58 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/target/classes/co/edu/uniquindio/vista" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/modelo" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.SistemasNumericosTest">
+    <configuration name="SistemasNumericosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculadoraIP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.pruebas.SistemasNumericosTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SistemasNumericosTest.toBinStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculadoraIP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.pruebas.SistemasNumericosTest" />
+      <option name="METHOD_NAME" value="toBinStringTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SistemasNumericosTest.toHexStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculadoraIP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.pruebas.SistemasNumericosTest" />
+      <option name="METHOD_NAME" value="toHexStringTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="CalculadoraIP" />
       <option name="VM_PARAMETERS" />
@@ -84,6 +144,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SistemasNumericosTest" />
+        <item itemvalue="JUnit.SistemasNumericosTest.toHexStringTest" />
+        <item itemvalue="JUnit.SistemasNumericosTest.toBinStringTest" />
         <item itemvalue="Kotlin.Main" />
       </list>
     </recent_temporary>
@@ -117,22 +180,22 @@
       <screen x="0" y="0" width="1366" height="733" />
     </state>
     <state x="319" y="109" width="719" height="514" key="FileChooserDialogImpl/0.0.1366.733@0.0.1366.733" timestamp="1588962181092" />
-    <state width="1320" height="172" key="GridCell.Tab.0.bottom" timestamp="1589610150005">
+    <state width="1320" height="172" key="GridCell.Tab.0.bottom" timestamp="1589913592859">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.bottom/0.0.1366.733@0.0.1366.733" timestamp="1589610150005" />
-    <state width="1320" height="172" key="GridCell.Tab.0.center" timestamp="1589610150004">
+    <state width="1320" height="172" key="GridCell.Tab.0.bottom/0.0.1366.733@0.0.1366.733" timestamp="1589913592859" />
+    <state width="1320" height="172" key="GridCell.Tab.0.center" timestamp="1589913592858">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.center/0.0.1366.733@0.0.1366.733" timestamp="1589610150004" />
-    <state width="1320" height="172" key="GridCell.Tab.0.left" timestamp="1589610150003">
+    <state width="1320" height="172" key="GridCell.Tab.0.center/0.0.1366.733@0.0.1366.733" timestamp="1589913592858" />
+    <state width="1320" height="172" key="GridCell.Tab.0.left" timestamp="1589913592857">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.left/0.0.1366.733@0.0.1366.733" timestamp="1589610150003" />
-    <state width="1320" height="172" key="GridCell.Tab.0.right" timestamp="1589610150004">
+    <state width="1320" height="172" key="GridCell.Tab.0.left/0.0.1366.733@0.0.1366.733" timestamp="1589913592857" />
+    <state width="1320" height="172" key="GridCell.Tab.0.right" timestamp="1589913592859">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.right/0.0.1366.733@0.0.1366.733" timestamp="1589610150004" />
+    <state width="1320" height="172" key="GridCell.Tab.0.right/0.0.1366.733@0.0.1366.733" timestamp="1589913592859" />
     <state width="1320" height="215" key="GridCell.Tab.1.bottom" timestamp="1589586241256">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
@@ -161,14 +224,18 @@
       <screen x="0" y="0" width="1366" height="733" />
     </state>
     <state x="455" y="146" width="446" height="441" key="chooseDestDirectoryDialog/0.0.1366.733@0.0.1366.733" timestamp="1589604284478" />
-    <state x="343" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1589661990085">
+    <state x="343" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1589912125839">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
-    <state x="343" y="194" key="com.intellij.ide.util.TipDialog/0.0.1366.733@0.0.1366.733" timestamp="1589661990085" />
+    <state x="343" y="194" key="com.intellij.ide.util.TipDialog/0.0.1366.733@0.0.1366.733" timestamp="1589912125839" />
     <state x="356" y="262" width="645" height="209" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1588962324576">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
     <state x="356" y="262" width="645" height="209" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.733@0.0.1366.733" timestamp="1588962324576" />
+    <state x="429" y="75" width="498" height="582" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog" timestamp="1589911520550">
+      <screen x="0" y="0" width="1366" height="733" />
+    </state>
+    <state x="429" y="75" width="498" height="582" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.0.1366.733@0.0.1366.733" timestamp="1589911520550" />
     <state x="347" y="160" key="run.anything.popup" timestamp="1589602500137">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
