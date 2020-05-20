@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="09e5b8d5-fd6e-41a4-b541-31b97c84f13e" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/test/kotlin/co/edu/uniquindio/pruebas/SistemasNumericosTest.kt" afterDir="false" />
@@ -24,20 +42,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1bdQdtbm0LWbshzU3PA5C5gt7Q3" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -47,6 +57,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -81,50 +92,16 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/modelo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SistemasNumericosTest">
-    <configuration name="SistemasNumericosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CalculadoraIP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.pruebas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.pruebas.SistemasNumericosTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SistemasNumericosTest.toBinStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CalculadoraIP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.pruebas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.pruebas.SistemasNumericosTest" />
-      <option name="METHOD_NAME" value="toBinStringTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SistemasNumericosTest.toHexStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CalculadoraIP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.pruebas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.pruebas.SistemasNumericosTest" />
-      <option name="METHOD_NAME" value="toHexStringTest" />
-      <option name="TEST_OBJECT" value="method" />
+  <component name="RunManager" selected="Kotlin.Main (1)">
+    <configuration name="Main (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="calculadora-ip" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Main" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,9 +121,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SistemasNumericosTest" />
-        <item itemvalue="JUnit.SistemasNumericosTest.toHexStringTest" />
-        <item itemvalue="JUnit.SistemasNumericosTest.toBinStringTest" />
+        <item itemvalue="Kotlin.Main (1)" />
         <item itemvalue="Kotlin.Main" />
       </list>
     </recent_temporary>
@@ -164,6 +139,18 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
@@ -180,22 +167,26 @@
       <screen x="0" y="0" width="1366" height="733" />
     </state>
     <state x="319" y="109" width="719" height="514" key="FileChooserDialogImpl/0.0.1366.733@0.0.1366.733" timestamp="1588962181092" />
-    <state width="1320" height="172" key="GridCell.Tab.0.bottom" timestamp="1589913592859">
-      <screen x="0" y="0" width="1366" height="733" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589933237535">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.bottom/0.0.1366.733@0.0.1366.733" timestamp="1589913592859" />
-    <state width="1320" height="172" key="GridCell.Tab.0.center" timestamp="1589913592858">
-      <screen x="0" y="0" width="1366" height="733" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589933237535" />
+    <state width="1320" height="172" key="GridCell.Tab.0.bottom/0.0.1366.733@0.0.1366.733" timestamp="1589610150005" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589933237535">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.center/0.0.1366.733@0.0.1366.733" timestamp="1589913592858" />
-    <state width="1320" height="172" key="GridCell.Tab.0.left" timestamp="1589913592857">
-      <screen x="0" y="0" width="1366" height="733" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589933237535" />
+    <state width="1320" height="172" key="GridCell.Tab.0.center/0.0.1366.733@0.0.1366.733" timestamp="1589610150004" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589933237535">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.left/0.0.1366.733@0.0.1366.733" timestamp="1589913592857" />
-    <state width="1320" height="172" key="GridCell.Tab.0.right" timestamp="1589913592859">
-      <screen x="0" y="0" width="1366" height="733" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589933237535" />
+    <state width="1320" height="172" key="GridCell.Tab.0.left/0.0.1366.733@0.0.1366.733" timestamp="1589610150003" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589933237535">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1320" height="172" key="GridCell.Tab.0.right/0.0.1366.733@0.0.1366.733" timestamp="1589913592859" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589933237535" />
+    <state width="1320" height="172" key="GridCell.Tab.0.right/0.0.1366.733@0.0.1366.733" timestamp="1589610150004" />
     <state width="1320" height="215" key="GridCell.Tab.1.bottom" timestamp="1589586241256">
       <screen x="0" y="0" width="1366" height="733" />
     </state>
