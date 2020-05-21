@@ -1,5 +1,14 @@
 package co.edu.uniquindio.modelo
 
+/**
+ * @author Yesid Shair Rosas Toro
+ * @author Samara Smith Rincon Montaña
+ * @author Juan David Usma Alzate
+ *
+ * @version 1.0
+ *
+ * SistemasNumericos
+ */
 class SistemasNumericos {
     companion object {
         @JvmStatic

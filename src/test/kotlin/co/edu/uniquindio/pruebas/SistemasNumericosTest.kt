@@ -4,6 +4,17 @@ import org.junit.Assert.*
 import org.junit.Test
 import co.edu.uniquindio.modelo.SistemasNumericos
 
+/**
+ * @author Yesid Shair Rosas Toro
+ * @author Samara Smith Rincon Montaña
+ * @author Juan David Usma Alzate
+ *
+ * @version 1.0
+ *
+ * SistemasNumericosTest
+ *
+ * Pruebas Unitarias de la clase SistemasNumericos
+ */
 class SistemasNumericosTest {
     @Test
     fun toBinStringTest() {
