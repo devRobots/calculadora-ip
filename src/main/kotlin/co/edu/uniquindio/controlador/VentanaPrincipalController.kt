@@ -1,14 +1,13 @@
 package co.edu.uniquindio.controlador
 
 import co.edu.uniquindio.excepciones.CampoVacioExcepcion
+import co.edu.uniquindio.modelo.CalculadoraIP
 import co.edu.uniquindio.modelo.SistemasNumericos
 import co.edu.uniquindio.utilidades.Mensaje
-
+import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
-import javafx.scene.layout.VBox
 import javafx.scene.input.KeyEvent
-
 import kotlin.system.exitProcess
 
 class VentanaPrincipalController {
@@ -24,7 +23,21 @@ class VentanaPrincipalController {
     @FXML
     private lateinit var txtDireccionIp: TextField
     @FXML
-    private lateinit var panelSalida: VBox
+    private lateinit var lblDireccionRed: Label
+    @FXML
+    private lateinit var lblMascara: Label
+    @FXML
+    private lateinit var lblDireccionBroadcast: Label
+    @FXML
+    private lateinit var lblNumBitsRed: Label
+    @FXML
+    private lateinit var lblNumBitsHosts: Label
+    @FXML
+    private lateinit var lblCantHosts: Label
+    @FXML
+    private lateinit var lblRangoHosts: Label
+    @FXML
+    private lateinit var lstHosts: ListView<String>
 
     /**
      * Elementos de conversion numerica
@@ -43,22 +56,41 @@ class VentanaPrincipalController {
         sistNumSeleccion.selectedToggleProperty().addListener { _, _, newValue ->
             when ((newValue as RadioButton).text) {
                 "Decimal" -> {
-                    txtDecimalNum.editableProperty().set(true)
-                    txtBinarioNum.editableProperty().set(false)
-                    txtHexadecimalNum.editableProperty().set(false)
+                    txtDecimalNum.disableProperty().set(false)
+                    txtBinarioNum.disableProperty().set(true)
+                    txtHexadecimalNum.disableProperty().set(true)
                 }
                 "Binario" -> {
-                    txtDecimalNum.editableProperty().set(false)
-                    txtBinarioNum.editableProperty().set(true)
-                    txtHexadecimalNum.editableProperty().set(false)
+                    txtDecimalNum.disableProperty().set(true)
+                    txtBinarioNum.disableProperty().set(false)
+                    txtHexadecimalNum.disableProperty().set(true)
                 }
                 "Hexadecimal" -> {
-                    txtDecimalNum.editableProperty().set(false)
-                    txtBinarioNum.editableProperty().set(false)
-                    txtHexadecimalNum.editableProperty().set(true)
+                    txtDecimalNum.disableProperty().set(true)
+                    txtBinarioNum.disableProperty().set(true)
+                    txtHexadecimalNum.disableProperty().set(false)
                 }
             }
         }
+    }
+
+    @FXML
+    fun calcularIP() {
+        val calculadora = CalculadoraIP(txtDireccionIp.text)
+
+        lblDireccionRed.text = calculadora.obtenerDireccionRed()
+        lblMascara.text = calculadora.obtenerMascaraDecimal()
+        lblDireccionBroadcast.text = calculadora.obtenerDireccionBroadcast()
+
+        lblCantHosts.text = calculadora.obtenerCantidadHosts().toString()
+        lblNumBitsHosts.text = calculadora.obtenerNumeroBitsHosts().toString()
+        lblNumBitsRed.text = calculadora.obtenerNumeroBitsRed().toString()
+
+        lblRangoHosts.text = calculadora.obtenerRangoDireccionesHost().toString()
+
+        val observableList = FXCollections.observableList(calculadora.obtenerDireccionesHosts())
+        lstHosts.items = observableList
+        lstHosts.refresh()
     }
 
 
@@ -71,9 +103,9 @@ class VentanaPrincipalController {
         val rangBin = '0'.rangeTo('1')
         val rangHex = 'A'.rangeTo('F')
 
-        val flag = when (event?.source) {
-            txtDecimalNum     -> txtDecimalNum.length > 8     || !Character.isDigit(c)
-            txtBinarioNum     -> txtBinarioNum.length > 30    || c !in rangBin
+        val flag = when (event.source) {
+            txtDecimalNum -> txtDecimalNum.length > 8 || !Character.isDigit(c)
+            txtBinarioNum -> txtBinarioNum.length > 30 || c !in rangBin
             txtHexadecimalNum -> txtHexadecimalNum.length > 6 || !(Character.isDigit(c) || c in rangHex)
             else -> false
         }

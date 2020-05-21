@@ -23,7 +23,7 @@ class CalculadoraIP(ipFormat: String) {
      *
      * @param ipConMascara La direccion ip con mascara en formato simplificado
      */
-    fun extraerIpYMascara(ipConMascara: String) {
+    private fun extraerIpYMascara(ipConMascara: String) {
         val ipSplited = ipConMascara.split("/")
         direccionIp = ipSplited[0]
         mascara = ipSplited[1].toInt()
@@ -45,7 +45,7 @@ class CalculadoraIP(ipFormat: String) {
             val bitsHost = obtenerNumeroBitsHosts()
 
             for (host in 1..cantHosts) {
-                var bin  = SistemasNumericos.toBinString(SistemasNumericos.decToBin(host))
+                var bin = SistemasNumericos.toBinString(SistemasNumericos.decToBin(host))
 
                 while (bin.length < bitsHost) {
                     bin = "0$bin"
@@ -218,7 +218,7 @@ class CalculadoraIP(ipFormat: String) {
 
         for (segmento in segmentos) {
             val aux = segmento.toInt()
-            var bin =  SistemasNumericos.toBinString(aux)
+            var bin = SistemasNumericos.toBinString(aux)
 
             while (bin.length < 8) {
                 bin = "0$bin"

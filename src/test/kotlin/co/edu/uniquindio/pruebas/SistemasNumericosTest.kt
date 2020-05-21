@@ -1,6 +1,6 @@
 package co.edu.uniquindio.pruebas
 
-import kotlin.test.*
+import org.junit.Assert.*
 import org.junit.Test
 import co.edu.uniquindio.modelo.SistemasNumericos
 

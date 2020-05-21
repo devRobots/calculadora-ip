@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,11 +12,13 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -57,31 +60,129 @@
                                        <children>
                                           <VBox spacing="10.0" style="-fx-border-color: lightgray;">
                                              <children>
-                                                <Label text="Ingrese la Direccion IP:">
-                                                   <font>
-                                                      <Font name="System Bold" size="13.0" />
-                                                   </font>
-                                                </Label>
-                                                <TextField fx:id="txtDireccionIp" promptText="192.168.1.34/24" />
-                                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Calcular IP" />
+                                                <HBox spacing="20.0">
+                                                   <children>
+                                                      <Label maxHeight="1.7976931348623157E308" text="Ingrese la Direccion IP:">
+                                                         <font>
+                                                            <Font name="System Bold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="txtDireccionIp" maxWidth="1.7976931348623157E308" promptText="192.168.1.34/24" HBox.hgrow="ALWAYS" />
+                                                   </children>
+                                                </HBox>
+                                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#calcularIP" text="Calcular" />
                                              </children>
                                              <padding>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                              </padding>
                                           </VBox>
-                                          <VBox spacing="10.0" style="-fx-border-color: lightgray;">
-                                             <children>
-                                                <Label text="Salida:">
-                                                   <font>
-                                                      <Font name="System Bold" size="13.0" />
-                                                   </font>
-                                                </Label>
-                                                <VBox fx:id="panelSalida" prefHeight="200.0" prefWidth="100.0" spacing="10.0" />
-                                             </children>
-                                             <padding>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                             </padding>
-                                          </VBox>
+                                          <TitledPane animated="false" collapsible="false" text="Resultado:">
+                                             <content>
+                                                <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                                   <content>
+                                                      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+                                                         <children>
+                                                            <GridPane gridLinesVisible="true">
+                                                              <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                              </columnConstraints>
+                                                              <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                              </rowConstraints>
+                                                               <children>
+                                                                  <Label text="Direccion de Red:">
+                                                                     <GridPane.margin>
+                                                                        <Insets left="10.0" />
+                                                                     </GridPane.margin>
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label text="Direccion de Broadcast:" GridPane.rowIndex="2">
+                                                                     <GridPane.margin>
+                                                                        <Insets left="10.0" />
+                                                                     </GridPane.margin>
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label text="Mascara de Red:" GridPane.rowIndex="1">
+                                                                     <GridPane.margin>
+                                                                        <Insets left="10.0" />
+                                                                     </GridPane.margin>
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label fx:id="lblDireccionRed" text="192.168.1.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                                                  <Label fx:id="lblMascara" text="255.255.255.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                                  <Label fx:id="lblDireccionBroadcast" text="192.168.1.255" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                                                               </children>
+                                                            </GridPane>
+                                                            <GridPane gridLinesVisible="true">
+                                                              <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                              </columnConstraints>
+                                                              <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                              </rowConstraints>
+                                                               <children>
+                                                                  <Label text="# bits de la Red" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label fx:id="lblNumBitsRed" text="24" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                                  <Label text="# bits de los Hosts" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label fx:id="lblNumBitsHosts" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                                  <Label text="Cantidad de Hosts" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label fx:id="lblCantHosts" text="254" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                               </children>
+                                                            </GridPane>
+                                                            <GridPane>
+                                                              <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                              </columnConstraints>
+                                                              <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                              </rowConstraints>
+                                                               <children>
+                                                                  <Label text="Rango de Hosts:">
+                                                                     <GridPane.margin>
+                                                                        <Insets left="10.0" />
+                                                                     </GridPane.margin>
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Label fx:id="lblRangoHosts" text="[192.168.1.1, 192.168.1.255]" GridPane.columnIndex="1" />
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="lstHosts" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS" />
+                                                         </children>
+                                                         <padding>
+                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </content>
+                                                </ScrollPane>
+                                             </content>
+                                          </TitledPane>
                                        </children>
                                        <padding>
                                           <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -165,8 +266,8 @@
                                                 <Label text="Binario" GridPane.rowIndex="1" />
                                                 <Label text="Hexadecimal" GridPane.rowIndex="2" />
                                                 <TextField fx:id="txtDecimalNum" alignment="CENTER_RIGHT" onKeyTyped="#baseNumericaPulsada" promptText="2147483647" GridPane.columnIndex="1" />
-                                                <TextField fx:id="txtBinarioNum" alignment="CENTER_RIGHT" editable="false" onKeyTyped="#baseNumericaPulsada" promptText="111111111111111111111111111111" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField fx:id="txtHexadecimalNum" alignment="CENTER_RIGHT" editable="false" onKeyTyped="#baseNumericaPulsada" promptText="7FFFFFFF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="txtBinarioNum" alignment="CENTER_RIGHT" disable="true" onKeyTyped="#baseNumericaPulsada" promptText="111111111111111111111111111111" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="txtHexadecimalNum" alignment="CENTER_RIGHT" disable="true" onKeyTyped="#baseNumericaPulsada" promptText="7FFFFFFF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                              </children>
                                              <BorderPane.margin>
                                                 <Insets bottom="10.0" top="10.0" />
