@@ -6,15 +6,25 @@ class CalculadoraIP(ipFormat: String) {
     /**
      * Direccion Ip del Host
      */
-    private val direccionIp: String
+    private lateinit var direccionIp: String
 
     /**
      * Mascara de la red en formato simplificado
      */
-    private val mascara: Int
+    private var mascara: Int = 24
 
     init {
-        val ipSplited = ipFormat.split("/")
+        extraerIpYMascara(ipFormat)
+    }
+
+    /**
+     * Metodo que extrae la direccion IP y la mascara a partir
+     * de una cadena dada
+     *
+     * @param ipConMascara La direccion ip con mascara en formato simplificado
+     */
+    fun extraerIpYMascara(ipConMascara: String) {
+        val ipSplited = ipConMascara.split("/")
         direccionIp = ipSplited[0]
         mascara = ipSplited[1].toInt()
     }
