@@ -20,6 +20,63 @@ class CalculadoraIP(ipFormat: String) {
     }
 
     /**
+     * Metodo para obtener todas las direcciones de host disponibles
+     * en la red
+     *
+     * @return ArrayList<String> Direcciones de host diponibles
+     */
+    fun obtenerDireccionesHosts(): ArrayList<String>? {
+        val cantHosts = obtenerCantidadHosts()
+
+        if (cantHosts > 0) {
+            val hosts = ArrayList<String>()
+
+            val bitsRed = direccionIpABinario(direccionIp).substring(0, mascara)
+            val bitsHost = obtenerNumeroBitsHosts()
+
+            for (host in 1..cantHosts) {
+                var bin  = SistemasNumericos.toBinString(SistemasNumericos.decToBin(host))
+
+                while (bin.length < bitsHost) {
+                    bin = "0$bin"
+                }
+
+                val direccionHost = binarioADireccionIP(bitsRed + bin)
+                hosts.add(direccionHost)
+            }
+
+            return hosts
+        }
+
+        return null
+    }
+
+    /**
+     * Metodo para obtener el rango de direcciones de host en la red
+     *
+     * @return Array<String> El rango de direcciones host
+     */
+    fun obtenerRangoDireccionesHost(): ArrayList<String>? {
+        val cantHost = obtenerCantidadHosts()
+
+        if (cantHost > 0) {
+            val direccionRed = obtenerDireccionRed()
+            var binMinHost = direccionIpABinario(direccionRed)
+            binMinHost = binMinHost.substring(0, binMinHost.length - 1) + '1'
+            val minHost = binarioADireccionIP(binMinHost)
+
+            val direccionBroadcast = obtenerDireccionBroadcast()
+            var binMaxHost = direccionIpABinario(direccionBroadcast)
+            binMaxHost = binMaxHost.substring(0, binMaxHost.length - 1) + '0'
+            val maxHost = binarioADireccionIP(binMaxHost)
+
+            return arrayListOf(minHost, maxHost)
+        }
+
+        return null
+    }
+
+    /**
      * Metodo para calcular el numero de bits de la red
      *
      * @return Int Numero de bits de la red
@@ -55,9 +112,8 @@ class CalculadoraIP(ipFormat: String) {
         var redBin = ""
 
         val ipBin = direccionIpABinario(direccionIp)
-        val mascaraBin = mascaraABinario()
 
-        for (i in ipBin.indices) redBin += if (mascaraBin[i] == '1') {
+        for (i in ipBin.indices) redBin += if (i < mascara) {
             ipBin[i]
         } else {
             '0'
