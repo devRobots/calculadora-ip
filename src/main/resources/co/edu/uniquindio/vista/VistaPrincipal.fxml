@@ -70,7 +70,7 @@
                                                       <TextField fx:id="txtDireccionIp" maxWidth="1.7976931348623157E308" promptText="192.168.1.34/24" HBox.hgrow="ALWAYS" />
                                                    </children>
                                                 </HBox>
-                                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#calcularIP" text="Calcular" />
+                                                <Button fx:id="btnCalcularIP" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#calcularIP" text="Calcular" />
                                              </children>
                                              <padding>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

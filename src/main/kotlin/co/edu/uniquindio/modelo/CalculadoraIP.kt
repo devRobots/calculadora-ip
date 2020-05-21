@@ -1,7 +1,17 @@
 package co.edu.uniquindio.modelo
 
 import kotlin.math.pow
+import co.edu.uniquindio.excepciones.*
 
+/**
+ * @author Yesid Shair Rosas Toro
+ * @author Samara Smith Rincon Montaña
+ * @author Juan David Usma Alzate
+ *
+ * @version 1.0
+ *
+ * CalculadoraIP
+ */
 class CalculadoraIP(ipFormat: String) {
     /**
      * Direccion Ip del Host
@@ -22,11 +32,40 @@ class CalculadoraIP(ipFormat: String) {
      * de una cadena dada
      *
      * @param ipConMascara La direccion ip con mascara en formato simplificado
+     *
+     * @throws CampoVacioExcepcion Excepcion que es lanzada cuando un campo necesario no es rellenado
+     * @throws DireccionIPInvalidaExcepcion Excepcion que es lanzada cuando se introduce una direccion IP incorrecta
+     * @throws MascaraInvalidaExcepcion Excepcion que es lanzada cuando se introduce una mascara de red incorrecta
      */
+    @Throws(CampoVacioExcepcion::class, DireccionIPInvalidaExcepcion::class, MascaraInvalidaExcepcion::class)
     private fun extraerIpYMascara(ipConMascara: String) {
-        val ipSplited = ipConMascara.split("/")
-        direccionIp = ipSplited[0]
-        mascara = ipSplited[1].toInt()
+        if(ipConMascara.isNotBlank()) {
+            if (ipConMascara.contains("/")) {
+                val ipSplited = ipConMascara.split("/")
+                if (ipSplited[0].isNotBlank()) {
+                    direccionIp = ipSplited[0]
+                    if (ipSplited[1].isNotBlank()) {
+                        try {
+                            mascara = ipSplited[1].toInt()
+
+                            if (mascara > 32 || mascara < 0) {
+                                throw MascaraInvalidaExcepcion("La mascara debe estar dentro del rango [8,32]")
+                            }
+                        } catch (ex: Exception) {
+                            throw MascaraInvalidaExcepcion("La mascara debe ser ingresada en formato simplificado")
+                        }
+                    } else {
+                        throw MascaraInvalidaExcepcion("La mascara de la red ingresada no es valida")
+                    }
+                } else {
+                    throw DireccionIPInvalidaExcepcion("La direccion IP ingresada no es valida")
+                }
+            } else {
+                throw MascaraInvalidaExcepcion("Por favor, ingrese la mascara de red en formato simplificado")
+            }
+        } else {
+            throw CampoVacioExcepcion("Ingrese la direccion IP y la mascara de red")
+        }
     }
 
     /**
@@ -108,7 +147,10 @@ class CalculadoraIP(ipFormat: String) {
      */
     fun obtenerCantidadHosts(): Int {
         val bitsHosts = obtenerNumeroBitsHosts()
-        val hosts = 2.0.pow(bitsHosts).toInt()
+        var hosts = 2
+        if (bitsHosts > 1) {
+            hosts = 2.0.pow(bitsHosts).toInt()
+        }
         return hosts - 2
     }
 

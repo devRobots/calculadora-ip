@@ -7,7 +7,6 @@ package co.edu.uniquindio.excepciones
  *
  * @version 1.0
  *
- * CampoVacioExcepcion
+ * MascaraInvalidaExcepcion
  */
-class CampoVacioExcepcion(mensaje : String) : Exception(mensaje)
-
+class MascaraInvalidaExcepcion(mensaje: String) : Exception(mensaje)

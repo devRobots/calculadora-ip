@@ -8,8 +8,18 @@ import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.input.KeyEvent
+import java.lang.Exception
 import kotlin.system.exitProcess
 
+/**
+ * @author Yesid Shair Rosas Toro
+ * @author Samara Smith Rincon Montaña
+ * @author Juan David Usma Alzate
+ *
+ * @version 1.0
+ *
+ * VentanaPrincipalController
+ */
 class VentanaPrincipalController {
     /**
      * Elementos base de JavaFX
@@ -38,6 +48,8 @@ class VentanaPrincipalController {
     private lateinit var lblRangoHosts: Label
     @FXML
     private lateinit var lstHosts: ListView<String>
+    @FXML
+    private lateinit var btnCalcularIP: Button
 
     /**
      * Elementos de conversion numerica
@@ -51,6 +63,11 @@ class VentanaPrincipalController {
     @FXML
     private lateinit var txtHexadecimalNum: TextField
 
+    /**
+     * Metodo initialize de JavaFX
+     *
+     * Utilizado para definir acciones de los ToggleButtons
+     */
     @FXML
     fun initialize() {
         sistNumSeleccion.selectedToggleProperty().addListener { _, _, newValue ->
@@ -74,28 +91,62 @@ class VentanaPrincipalController {
         }
     }
 
+    /**
+     * Realiza los calculos solicitados en el punto 2.1 y 2.2 del Proyecto
+     */
     @FXML
     fun calcularIP() {
-        val calculadora = CalculadoraIP(txtDireccionIp.text)
+        try {
+            val calculadora = CalculadoraIP(txtDireccionIp.text)
 
-        lblDireccionRed.text = calculadora.obtenerDireccionRed()
-        lblMascara.text = calculadora.obtenerMascaraDecimal()
-        lblDireccionBroadcast.text = calculadora.obtenerDireccionBroadcast()
+            lblDireccionRed.text = calculadora.obtenerDireccionRed()
+            lblMascara.text = calculadora.obtenerMascaraDecimal()
+            lblDireccionBroadcast.text = calculadora.obtenerDireccionBroadcast()
 
-        lblCantHosts.text = calculadora.obtenerCantidadHosts().toString()
-        lblNumBitsHosts.text = calculadora.obtenerNumeroBitsHosts().toString()
-        lblNumBitsRed.text = calculadora.obtenerNumeroBitsRed().toString()
+            lblCantHosts.text = calculadora.obtenerCantidadHosts().toString()
+            lblNumBitsHosts.text = calculadora.obtenerNumeroBitsHosts().toString()
+            lblNumBitsRed.text = calculadora.obtenerNumeroBitsRed().toString()
 
-        lblRangoHosts.text = calculadora.obtenerRangoDireccionesHost().toString()
+            lblRangoHosts.text = calculadora.obtenerRangoDireccionesHost()?.toString() ?: "No existe un rango valido"
 
-        val observableList = FXCollections.observableList(calculadora.obtenerDireccionesHosts())
-        lstHosts.items = observableList
-        lstHosts.refresh()
+            if (calculadora.obtenerRangoDireccionesHost() != null) {
+                if (calculadora.obtenerCantidadHosts() > 1048574) {
+                    if (Mensaje.preguntar("La mascara es demasiado pequeña, esto podria ocasionar que el proceso demore mas de lo esperado. ¿Desea continuar?")) {
+                        Thread(Runnable {
+                            kotlin.run {
+                                synchronized(lstHosts.items) {
+                                    lstHosts.items.clear()
+                                    txtDireccionIp.disableProperty().set(true)
+                                    btnCalcularIP.disableProperty().set(true)
+                                    val lista = calculadora.obtenerDireccionesHosts()!!
+                                    txtDireccionIp.disableProperty().set(false)
+                                    btnCalcularIP.disableProperty().set(false)
+                                    val observableList = FXCollections.observableList(lista)
+                                    lstHosts.itemsProperty().set(observableList)
+                                    lstHosts.refresh()
+                                }
+                            }
+                        }).start()
+                    }
+                } else {
+                    lstHosts.items.clear()
+                    val lista = calculadora.obtenerDireccionesHosts()
+                    val observableList = FXCollections.observableList(lista)
+                    lstHosts.items = observableList
+                    lstHosts.refresh()
+                }
+            } else {
+                lstHosts.items.clear()
+                lstHosts.refresh()
+            }
+        } catch (ex: Exception) {
+            Mensaje.error(ex)
+        }
     }
 
 
     /**
-     *
+     * Valida la pulsacion de los numeros ingresados en la pestaña de conversiones numericas
      */
     @FXML
     fun baseNumericaPulsada(event: KeyEvent?) {
@@ -113,12 +164,15 @@ class VentanaPrincipalController {
         if (flag) event.consume()
     }
 
+    /**
+     * Valida y realiza las conversiones numericas desde el sistema numerico seleccionado
+     */
     @FXML
     fun conversionNumerica() {
         when ((sistNumSeleccion.selectedToggle as RadioButton).text) {
             "Decimal" -> {
                 val decString = txtDecimalNum.text
-                if (decString.isNotEmpty()) {
+                if (decString.isNotBlank()) {
                     val dec = Integer.parseInt(decString)
                     txtBinarioNum.text = SistemasNumericos.toBinString(dec)
                     txtHexadecimalNum.text = SistemasNumericos.toHexString(dec).toUpperCase()
@@ -128,7 +182,7 @@ class VentanaPrincipalController {
             }
             "Binario" -> {
                 val binString = txtBinarioNum.text
-                if (binString.isNotEmpty()) {
+                if (binString.isNotBlank()) {
                     val bin = Integer.parseInt(binString, 2)
                     val dec = SistemasNumericos.binToDec(bin)
                     txtDecimalNum.text = dec.toString()
@@ -139,7 +193,7 @@ class VentanaPrincipalController {
             }
             "Hexadecimal" -> {
                 val hexString = txtHexadecimalNum.text
-                if (hexString.isNotEmpty()) {
+                if (hexString.isNotBlank()) {
                     val hex = Integer.parseInt(hexString, 16)
                     val dec = SistemasNumericos.hexToDec(hex)
                     txtDecimalNum.text = dec.toString()
@@ -151,15 +205,35 @@ class VentanaPrincipalController {
         }
     }
 
+    /**
+     * Cierra la aplicacion
+     */
     @FXML
     fun cerrar() {
         exitProcess(0)
     }
 
+    /**
+     * Limpia los campos del panel actual
+     */
     @FXML
     fun limpiar() {
         if (tabPanel.selectionModel.selectedIndex == 0) {
             txtDireccionIp.clear()
+
+            lblDireccionRed.text =          "XXX.XXX.XXX.XXX"
+            lblMascara.text =               "XXX.XXX.XXX.XXX"
+            lblDireccionBroadcast.text =    "XXX.XXX.XXX.XXX"
+
+            lblCantHosts.text =             "-"
+            lblNumBitsHosts.text =          "-"
+            lblNumBitsRed.text =            "-"
+
+            lblRangoHosts.text =            "[,]"
+
+            val observableList = FXCollections.emptyObservableList<String>()
+            lstHosts.items = observableList
+            lstHosts.refresh()
         } else {
             txtDecimalNum.clear()
             txtBinarioNum.clear()
@@ -167,6 +241,9 @@ class VentanaPrincipalController {
         }
     }
 
+    /**
+     * Muestra informacion de la aplicacion
+     */
     @FXML
     fun acerca() {
         val titulo = "Calculadora IP"

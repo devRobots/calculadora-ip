@@ -7,7 +7,6 @@ package co.edu.uniquindio.excepciones
  *
  * @version 1.0
  *
- * CampoVacioExcepcion
+ * DireccionIPInvalidaExcepcion
  */
-class CampoVacioExcepcion(mensaje : String) : Exception(mensaje)
-
+class DireccionIPInvalidaExcepcion(mensaje: String) : Exception(mensaje)
